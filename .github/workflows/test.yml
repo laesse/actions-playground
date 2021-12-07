@@ -15,7 +15,9 @@ jobs:
     steps:
       - name: echo owo
         id: fun
-        run: echo owo
+        run: | 
+          echo owo
+          $output=owo
   job2:
     needs: [job1]
     runs-on: ubuntu-latest
