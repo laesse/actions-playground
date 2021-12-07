@@ -9,7 +9,7 @@ on:
 jobs:
   job1:
     outputs:
-      uwu: uwu
+      uwu: owo
     runs-on: ubuntu-latest
 
     steps:
@@ -20,4 +20,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Echo other output
-        run: echo ${{ needs.job1.outputs.uwuw }}
+        run: test owo = ${{ needs.job1.outputs.uwu }}
