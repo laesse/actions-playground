@@ -9,12 +9,13 @@ on:
 jobs:
   job1:
     outputs:
-      uwu: owo
+      uwu: ${{ steps.fun.outputs.uwu }}
     runs-on: ubuntu-latest
 
     steps:
-      - name: Run a one-line script
-        run: echo Ran job1
+      - name: echo owo
+        id: fun
+        run: echo owo
   job2:
     needs: [job1]
     runs-on: ubuntu-latest
