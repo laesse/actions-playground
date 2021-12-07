@@ -1,0 +1,23 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  job1:
+    outputs:
+      uwu: uwu
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run a one-line script
+        run: echo Ran job1
+  job2:
+    needs: [job1]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo other output
+      - run: echo ${{ needs.job1.outputs.uwuw }}
