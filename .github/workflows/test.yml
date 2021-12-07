@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: testing out
 
 on:
   push:
@@ -20,4 +20,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Echo other output
-      - run: echo ${{ needs.job1.outputs.uwuw }}
+        run: echo ${{ needs.job1.outputs.uwuw }}
