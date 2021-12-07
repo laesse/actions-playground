@@ -9,7 +9,7 @@ on:
 jobs:
   job1:
     outputs:
-      uwu: ${{ steps.fun.outputs.uwu }}
+      uwu: owo
     runs-on: ubuntu-latest
 
     steps:
@@ -17,7 +17,6 @@ jobs:
         id: fun
         run: | 
           echo owo
-          $output=owo
   job2:
     needs: [job1]
     runs-on: ubuntu-latest
