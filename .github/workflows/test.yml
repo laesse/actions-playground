@@ -25,7 +25,7 @@ jobs:
     steps:
       - name: Build
         run: |
-          ./foo-service/build.sh
+          echo "building..."
 
   bar-service:
     needs: [install-build]
@@ -34,4 +34,4 @@ jobs:
     steps:
       - name: Build
         run: |
-          ./bar-service/build.sh
+          echo "building ..."
