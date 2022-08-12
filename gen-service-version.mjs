@@ -8,10 +8,13 @@ function latestCommitInDirectory(dirname) {
 
 const serviceVersions = {};
 
+const currentCommit = latestCommitInDirectory('.');
+
 for (const service of services) {
     const version = latestCommitInDirectory(service);
 
     serviceVersions[service] = version;
 }
 
+console.log(currentCommit);
 console.log(serviceVersions);
