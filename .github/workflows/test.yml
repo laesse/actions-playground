@@ -4,7 +4,7 @@ name: testing out
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   install-build:
@@ -15,9 +15,9 @@ jobs:
     steps:
       - name: install
         id: install
-        run: | 
+        run: |
           echo pnpm install
-          node ./gen-service-version.mjs
+          node ./gen-service-version.js
 
   foo-service:
     needs: [install-build]
