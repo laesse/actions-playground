@@ -9,8 +9,8 @@ on:
 jobs:
   install-build:
     outputs:
-      foo-service: 'run'
-      bar-service: 'skip'
+      foo-service: ${{ steps.install.outputs.foo-service }}
+      bar-service: ${{ steps.install.outputs.bar-service }}
     runs-on: ubuntu-latest
     steps:
       - name: install

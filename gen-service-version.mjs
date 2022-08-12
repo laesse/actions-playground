@@ -11,10 +11,14 @@ const serviceVersions = {};
 const currentCommit = latestCommitInDirectory('.');
 
 for (const service of services) {
-    const version = latestCommitInDirectory(service);
-
-    serviceVersions[service] = version;
+    serviceVersions[service] = latestCommitInDirectory(service);
 }
 
 console.log(currentCommit);
 console.log(serviceVersions);
+
+Object.entries(serviceVersions).forEach(([name, version]) => {
+    const skip = version === currentCommit ? 'run' : 'skip';
+
+    console.log(`::set-output name=${name}::${skip}`)
+});
