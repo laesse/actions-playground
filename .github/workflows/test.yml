@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: install
-        id: fun
+        id: install
         run: | 
           echo pnpm install
 
@@ -25,7 +25,7 @@ jobs:
     steps:
       - name: Build
         run: |
-          echo "building..."
+          echo "building..." ${{ needs.install-build.outputs.foo-service }}
 
   bar-service:
     needs: [install-build]
@@ -34,4 +34,4 @@ jobs:
     steps:
       - name: Build
         run: |
-          echo "building ..."
+          echo "building ..." ${{ needs.install-build.outputs.bar-service }}
