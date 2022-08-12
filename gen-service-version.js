@@ -3,6 +3,9 @@ const child_process = require("child_process");
 const services = ["bar-service", "foo-service"];
 
 function latestCommitInDirectory(dirname) {
+  console.log(String(
+      child_process.execSync(`git log -n 2 -- ${dirname}`)
+  ))
   return String(
     child_process.execSync(`git log --pretty=format:%H -n 1 -- ${dirname}`)
   );
