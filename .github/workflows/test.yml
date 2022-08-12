@@ -21,7 +21,7 @@ jobs:
   foo-service:
     needs: [install-build]
     runs-on: ubuntu-latest
-    if: ${{ needs.install-build.outputs.foo-service }}
+    if: "${{ needs.install-build.outputs.foo-service }}"
     steps:
       - name: Build
         run: |
@@ -30,8 +30,16 @@ jobs:
   bar-service:
     needs: [install-build]
     runs-on: ubuntu-latest
-    if: ${{ needs.install-build.outputs.bar-service }}
+    if: "${{ needs.install-build.outputs.bar-service }}"
     steps:
       - name: Build
         run: |
           echo "building ..." ${{ needs.install-build.outputs.bar-service }}
+
+  does-string:
+    runs-on: ubuntu-18.04
+    if: "false"
+    steps:
+      - name: was
+        run: ""
+
