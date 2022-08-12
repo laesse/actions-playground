@@ -16,7 +16,7 @@ jobs:
       - name: install
         id: fun
         run: | 
-          pnpm install!
+          echo pnpm install
 
   foo-service:
     needs: [install-build]
