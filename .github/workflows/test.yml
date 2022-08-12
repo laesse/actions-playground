@@ -9,7 +9,7 @@ on:
 jobs:
   install-build:
     outputs:
-      foo-service: 'true'
+      foo-service: 'false'
       bar-service: 'true'
     runs-on: ubuntu-latest
     steps:
@@ -21,7 +21,7 @@ jobs:
   foo-service:
     needs: [install-build]
     runs-on: ubuntu-latest
-    if: 'true'
+    if: ${{ needs.install-build.outputs.foo-service }}
     steps:
       - name: Build
         run: |
@@ -30,7 +30,7 @@ jobs:
   bar-service:
     needs: [install-build]
     runs-on: ubuntu-latest
-    if: 'false'
+    if: ${{ needs.install-build.outputs.bar-service }}
     steps:
       - name: Build
         run: |
