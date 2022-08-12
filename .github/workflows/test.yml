@@ -7,19 +7,31 @@ on:
     branches: [ main ]
 
 jobs:
-  job1:
+  install-build:
     outputs:
-      uwu: owo
+      foo-service: 'true'
+      bar-service: 'true'
     runs-on: ubuntu-latest
-
     steps:
-      - name: echo owo
+      - name: install
         id: fun
         run: | 
-          echo owo
-  job2:
-    needs: [job1]
+          pnpm install!
+
+  foo-service:
+    needs: [install-build]
     runs-on: ubuntu-latest
+    if: 'true'
     steps:
-      - name: Echo other output
-        run: test owo = ${{ needs.job1.outputs.uwu }}
+      - name: Build
+        run: |
+          ./foo-service/build.sh
+
+  bar-service:
+    needs: [install-build]
+    runs-on: ubuntu-latest
+    if: 'false'
+    steps:
+      - name: Build
+        run: |
+          ./bar-service/build.sh
