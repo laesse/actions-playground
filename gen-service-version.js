@@ -1,4 +1,4 @@
-import * as child_process from 'child_process';
+const child_process = require('child_process');
 
 const services = ['bar-service', 'foo-service'];
 
