@@ -25,7 +25,7 @@ jobs:
   build-services:
     needs: [install-build]
     runs-on: ubuntu-latest
-    if: ${{ needs.install-build.outputs.job-strategy-matrix != "[]"}}
+    if: ${{ needs.install-build.outputs.job-strategy-matrix != '[]' }}
     strategy:
       matrix:
         service: ${{ needs.install-build.outputs.job-strategy-matrix }}
