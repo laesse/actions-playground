@@ -31,7 +31,7 @@ jobs:
         service: ${{ fromJson(needs.install-build.outputs.job-strategy-matrix) }}
     steps:
       - name: Checkout code
-        uses: gogaille/sparse-checkout
+        uses: gogaille/sparse-checkout@3114de9b3cf84c0829fe84222d8ae8d806fbc794
         with:
           patterns: '${{ matrix.service }} gen-service-version.js'
 

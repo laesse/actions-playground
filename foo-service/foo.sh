@@ -6,5 +6,3 @@ echo 'fixed another bug'
 echo 'NOT ANOTHER ONE'
 
 echo 'adding a thing here'
-
-# important change
