@@ -9,8 +9,7 @@ on:
 jobs:
   install-build:
     outputs:
-      foo-service: ${{ steps.install.outputs.foo-service }}
-      bar-service: ${{ steps.install.outputs.bar-service }}
+      job-strategy-matrix: ${{ steps.install.outputs.job-strategy-matrix }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -23,24 +22,15 @@ jobs:
           echo pnpm install
           node ./gen-service-version.js
 
-  foo-service:
+  build-services:
     needs: [install-build]
     runs-on: ubuntu-latest
-    if: ${{ needs.install-build.outputs.foo-service == 'run' }}
+    strategy:
+      matrix:
+        service: { { needs.install-build.outputs.job-strategy-matrix } }
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Build
         run: |
-          ./foo-service/build.sh
-
-  bar-service:
-    needs: [install-build]
-    runs-on: ubuntu-latest
-    if: ${{ needs.install-build.outputs.bar-service == 'run' }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Build
-        run: |
-          ./bar-service/build.sh
+          ./{{ matrix.service }}/build.sh
