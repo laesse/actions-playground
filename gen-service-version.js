@@ -27,4 +27,4 @@ Object.entries(serviceVersions).forEach(([name, version]) => {
   }
 });
 
-console.log(`::set-output name=job-strategy-matrix::[${job_strategy_matrix.join(', ')}]`);
+console.log(`::set-output name=job-strategy-matrix::["${job_strategy_matrix.join('", "')}"]`);
