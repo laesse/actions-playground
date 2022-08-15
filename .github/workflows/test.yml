@@ -27,10 +27,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        service: { { needs.install-build.outputs.job-strategy-matrix } }
+        service: ${{ needs.install-build.outputs.job-strategy-matrix }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Build
         run: |
-          ./{{ matrix.service }}/build.sh
+          ./${{ matrix.service }}/build.sh
