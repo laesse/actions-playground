@@ -32,7 +32,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: gogaille/sparse-checkout
+        with:
           patterns: '${{ matrix.service }} gen-service-version.js'
+
       - name: Build
         run: |
           ls .
